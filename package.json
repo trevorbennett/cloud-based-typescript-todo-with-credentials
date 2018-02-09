@@ -1,0 +1,24 @@
+{
+  "name": "cloud-based-typescript-todo-with-credentials",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "tsc": "^1.20150623.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trevorbennett/cloud-based-typescript-todo-with-credentials.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trevorbennett/cloud-based-typescript-todo-with-credentials/issues"
+  },
+  "homepage": "https://github.com/trevorbennett/cloud-based-typescript-todo-with-credentials#readme"
+}

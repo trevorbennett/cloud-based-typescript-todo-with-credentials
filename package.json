@@ -2,13 +2,15 @@
   "name": "cloud-based-typescript-todo-with-credentials",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib\\index",
+  "types": "lib\\index",
   "dependencies": {
     "tsc": "^1.20150623.0",
     "typescript": "^2.7.1"
   },
   "devDependencies": {
     "@types/node": "^8.9.1",
+    "nodemon": "^1.14.12",
     "ts-node": "^4.1.0"
   },
   "scripts": {

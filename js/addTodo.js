@@ -5,7 +5,8 @@ xhttp.onreadystatechange = function () {
         document.getElementById("button").innerHTML = this.responseText;
     }
 };
-xhttp.open("GET", "http://localhost:8080", true);
+xhttp.open("POST", "http://localhost:8080", true);
+xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 xhttp.send();
 
 }

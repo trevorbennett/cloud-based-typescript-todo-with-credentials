@@ -1,7 +1,11 @@
 var http = require('http');
 const NOT_COMPLETE = '0';
 http.createServer(function (req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.writeHead(200, {
+        'Content-Type': 'text/plain',
+        'Access-Control-Allow-Origin': '*'
+
+    });
     res.end('Original String do not steal!');
     var todo = addTodo();
 }).listen(8080);
@@ -46,5 +50,3 @@ function addTodo(){
       });
 
 }
-
-var todo = addTodo();

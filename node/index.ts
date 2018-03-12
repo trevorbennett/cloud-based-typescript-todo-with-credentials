@@ -3,6 +3,7 @@ const NOT_COMPLETE = '0';
 http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end('Original String do not steal!');
+    var todo = addTodo();
 }).listen(8080);
 
 var mysql = require('mysql');
@@ -31,9 +32,9 @@ function addTodo(){
           if(err) throw err;
 
           currentRow = Number(JSON.stringify(result[0].ROWCOUNT));
-          var userTodo = prompt("What would you like to do?", "Destroy Kalamazoo");
+          var userTodo =  "Destroy Kalamazoo";
 
-          var insert = "insert into todo values (" + currentRow + ", " + userTodo + ", " + NOT_COMPLETE + ");";
+          var insert = "insert into todo values (" + currentRow + ", '" + userTodo + "', " + NOT_COMPLETE + ");";
 
           con.query(insert, function(err, result){
             if(err) throw err;
@@ -45,3 +46,5 @@ function addTodo(){
       });
 
 }
+
+var todo = addTodo();

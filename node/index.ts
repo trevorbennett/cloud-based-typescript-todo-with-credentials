@@ -6,21 +6,24 @@ http.createServer(function (req, res) {
 }).listen(8080);
 
 var mysql = require('mysql');
-console.log("JS has been hit");
 
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "BANANA",
-  database: "marcus"
-});
 
 var rowCount = "SELECT COUNT(*) AS ROWCOUNT FROM todo;";
 var currentRow = 0;
 
-window.addEventListener("click", addTodo);
-window.onclick = function addTodo(todoText){
+function addTodo(){
 
+
+
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "BANANA",
+      database: "marcus"
+    });
+
+
+    console.log("function has been hit");
       con.connect(function(err) {
         if (err) throw err;
 
@@ -28,8 +31,9 @@ window.onclick = function addTodo(todoText){
           if(err) throw err;
 
           currentRow = Number(JSON.stringify(result[0].ROWCOUNT));
+          var userTodo = prompt("What would you like to do?", "Destroy Kalamazoo");
 
-          var insert = "insert into todo values (" + currentRow + ", 'drink coffee', " + NOT_COMPLETE + ");";
+          var insert = "insert into todo values (" + currentRow + ", " + userTodo + ", " + NOT_COMPLETE + ");";
 
           con.query(insert, function(err, result){
             if(err) throw err;

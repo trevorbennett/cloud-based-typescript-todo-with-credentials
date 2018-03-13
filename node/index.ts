@@ -1,5 +1,5 @@
 var http = require('http');
-const NOT_COMPLETE = '0';
+var util = require('util');
 http.createServer(function (req, res) {
     res.writeHead(200, {
         'Content-Type': 'text/plain',
@@ -7,7 +7,7 @@ http.createServer(function (req, res) {
 
     });
     res.end('Original String do not steal!');
-    var todo = addTodo();
+    var todo = addTodo(req);
 }).listen(8080);
 
 var mysql = require('mysql');
@@ -16,9 +16,7 @@ var mysql = require('mysql');
 var rowCount = "SELECT COUNT(*) AS ROWCOUNT FROM todo;";
 var currentRow = 0;
 
-function addTodo(){
-
-
+function addTodo(todoPayload){
 
     var con = mysql.createConnection({
       host: "localhost",
@@ -27,26 +25,20 @@ function addTodo(){
       database: "marcus"
     });
 
-
-    console.log("function has been hit");
+    console.log("******"+console.log(util.inspect(todoPayload))+"*************************");
       con.connect(function(err) {
-        if (err) throw err;
 
         con.query(rowCount, function(err, result){
-          if(err) throw err;
 
           currentRow = Number(JSON.stringify(result[0].ROWCOUNT));
-          var userTodo =  "Destroy Kalamazoo";
 
-          var insert = "insert into todo values (" + currentRow + ", '" + userTodo + "', " + NOT_COMPLETE + ");";
+          var insert = "insert into todo values (" + currentRow + ", '" + todoPayload.todoInput + "', " + todoPayload.completed + ");";
 
           con.query(insert, function(err, result){
-            if(err) throw err;
+            if(err)
             console.log("Result: " + currentRow);
           });
 
         });
-
       });
-
 }

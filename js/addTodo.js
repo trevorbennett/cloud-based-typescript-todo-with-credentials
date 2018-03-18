@@ -4,7 +4,7 @@ function addTodo(){
         todoInput: todoInput,
         completed: '0'
     };
-    $.post("http://localhost:8080", todoPayload, function(data){
+    $.post("http://localhost:3000/post", todoPayload, function(data){
         alert("the response was: " + data);
     });
 

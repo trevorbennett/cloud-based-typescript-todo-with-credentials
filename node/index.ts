@@ -1,17 +1,21 @@
-var http = require('http');
-var util = require('util');
+var express = require('express');
+var bodyParser = require('body-parser');
 var mysql = require('mysql');
 
-http.createServer(function (req, res) {
-    res.writeHead(200, {
-        'Content-Type': 'text/plain',
-        'Access-Control-Allow-Origin': '*'
+var app = express();
 
-    });
-    res.end('Original String do not steal!');
-    var todo = addTodo(req);
-}).listen(8080);
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
+app.post('/post', function(req, res) {
+
+    var todo = addTodo(req.body);
+    res.send('Hello World!');
+});
+
+app.listen(3000, function() {
+  console.log('Example app listening on port 3000!');
+});
 
 var rowCount = "SELECT COUNT(*) AS ROWCOUNT FROM todo;";
 var currentRow = 0;
@@ -25,7 +29,7 @@ function addTodo(todoPayload){
       database: "marcus"
     });
 
-    console.log("******"+console.log(util.inspect(todoPayload))+"******");
+    console.log("******"+console.log(todoPayload)+"******");
       con.connect(function(err) {
 
         con.query(rowCount, function(err, result){

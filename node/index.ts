@@ -1,5 +1,7 @@
 var http = require('http');
 var util = require('util');
+var mysql = require('mysql');
+
 http.createServer(function (req, res) {
     res.writeHead(200, {
         'Content-Type': 'text/plain',
@@ -9,8 +11,6 @@ http.createServer(function (req, res) {
     res.end('Original String do not steal!');
     var todo = addTodo(req);
 }).listen(8080);
-
-var mysql = require('mysql');
 
 
 var rowCount = "SELECT COUNT(*) AS ROWCOUNT FROM todo;";
@@ -25,7 +25,7 @@ function addTodo(todoPayload){
       database: "marcus"
     });
 
-    console.log("******"+console.log(util.inspect(todoPayload))+"*************************");
+    console.log("******"+console.log(util.inspect(todoPayload))+"******");
       con.connect(function(err) {
 
         con.query(rowCount, function(err, result){

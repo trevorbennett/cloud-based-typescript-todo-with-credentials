@@ -9,3 +9,10 @@ function addTodo(){
     });
 
 }
+
+function showTodos(){
+    $.get("http://localhost:3000/allTodos", function(data){
+        alert("the response was: " + data);
+    });
+
+}

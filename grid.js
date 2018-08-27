@@ -9,10 +9,10 @@ $(function() {
     paging: true,
     data: friends,
     fields: [
-      { name: "Name", type: "text", width: 100 },
-      { name: "Age", type: "number", width: 50 },
+      { name: "Done", type: "checkbox", width: 20, title: "Done" },
+      { name: "Name", type: "text", width: 150 },
+      { name: "CompleteBy", type: "date", width: 50 },
       countries,
-      { name: "Cool", type: "checkbox", width: 40, title: "Is Cool", sorting: false },
       { type: "control" }
     ]
   })  
@@ -21,15 +21,9 @@ $(function() {
 var friends = [
   {
     Name: "John Adams",
-    Age: 36,
+    CompleteBy: "3-6-1993",
     Country: 1,
     Cool: false,
-  },
-  {
-    Name: "Alexander Hamilton",
-    Age: 27,
-    Country: 1,
-    Cool: true,
   }
 ];
 

@@ -9,7 +9,7 @@ $(function() {
     paging: true,
     data: gridElements,
     fields: [
-      { name: "Done", type: "checkbox", width: 20, title: "Done" },
+      { name: "Done", type: "checkbox", width: 20 },
       { name: "Task", type: "text", width: 150 },
       { name: "CompleteBy", type: "date", width: 50, title: "Complete By" },
       project,
